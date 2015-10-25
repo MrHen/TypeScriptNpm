@@ -18,7 +18,9 @@
   "dependencies": {
     "event-stream": "^3.3.2",
     "gulp": "^3.9.0",
+    "gulp-bump": "^1.0.0",
     "gulp-filter": "^3.0.1",
+    "gulp-newer": "^1.0.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-typescript": "^2.9.2",
     "gulp-util": "^3.0.7",

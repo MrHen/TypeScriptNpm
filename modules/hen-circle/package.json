@@ -1,6 +1,6 @@
 {
   "name": "hen-circle",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "A circular dependency",
   "main": "app/index.js",
   "typings": "./app/index.d.ts",

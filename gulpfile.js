@@ -3,6 +3,9 @@
 var _ = require('lodash');
 var event_stream = require('event-stream');
 var gulp = require('gulp');
+var gulp_bump = require('gulp-bump');
+var gulp_newer = require('gulp-newer');
+var gulp_filter = require('gulp-filter');
 var gulp_typescript = require('gulp-typescript');
 var gulp_util = require('gulp-util');
 
@@ -66,12 +69,24 @@ gulp.task('server', function() {
     );
 });
 
+gulp.task('npmbump', function() {
+    gulp_util.log('Detecting appropriate starting directory for bump...', process.env.INIT_CWD);
+
+    var packageFilter = gulp_filter('**/package.json');
+
+    gulp.src('modules/hen-circle/**/*')
+        .pipe(gulp_newer('modules/hen-circle/package.json'))
+        .pipe(packageFilter)
+        .pipe(gulp_bump())
+        .pipe(gulp.dest('modules/hen-circle/'));
+
+});
+
 gulp.task('npmbuild', function() {
     gulp_util.log('Detecting appropriate starting directory...', process.env.INIT_CWD);
 
     var out = process.env.INIT_CWD + '/app';
     var build = [process.env.INIT_CWD + '/**/*.ts', 'typings/tsd.d.ts', '!' + process.env.INIT_CWD + '/node_modules/**/*'];
-    //var copy = [process.env.INIT_CWD + '/**/*.{js,json}', '!' + out + '/**/*'];
     var typings = 'typings/tsd.d.ts';
 
     var project = gulp_typescript.createProject({
@@ -88,6 +103,5 @@ gulp.task('npmbuild', function() {
     return event_stream.merge(
         tsResult.dts.pipe(gulp.dest(out)),
         tsResult.js.pipe(gulp.dest(out))
-        //gulp.src(copy).pipe(gulp.dest(out))
     );
 });
