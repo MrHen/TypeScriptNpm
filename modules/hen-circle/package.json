@@ -1,7 +1,7 @@
 {
-  "name": "hen-doodad",
+  "name": "hen-circle",
   "version": "1.0.0",
-  "description": "A fancy doodad",
+  "description": "A circular dependency",
   "main": "app/index.js",
   "typings": "./app/index.d.ts",
   "repository": {
@@ -15,7 +15,6 @@
     "postinstall": "npm run build"
   },
   "dependencies": {
-    "hen-circle": "file:../hen-circle",
-    "hen-thingy": "file:../hen-thingy"
+    "hen-doodad": "file:../hen-doodad"
   }
 }
