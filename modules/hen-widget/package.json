@@ -11,7 +11,8 @@
   "author": "Adam Babcock",
   "license": "ISC",
   "scripts": {
-    "build": "gulp npmbuild"
+    "build": "gulp npmbuild",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "hen-thingy": "file:../hen-thingy"

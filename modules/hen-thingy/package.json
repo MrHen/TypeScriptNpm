@@ -11,6 +11,7 @@
   "author": "Adam Babcock",
   "license": "ISC",
   "scripts": {
-    "build": "gulp npmbuild"
+    "build": "gulp npmbuild",
+    "postinstall": "npm run build"
   }
 }
