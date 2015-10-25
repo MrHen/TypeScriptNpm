@@ -1,0 +1,27 @@
+{
+  "name": "TypeScriptNpm-Server",
+  "version": "1.0.0",
+  "description": "Sandbox for building and maintaining local npm modules",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MrHen/TypeScriptNpm.git"
+  },
+  "author": "Adam Babcock",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MrHen/TypeScriptNpm/issues"
+  },
+  "homepage": "https://github.com/MrHen/TypeScriptNpm",
+  "devDependencies": {
+    "tsd": "^0.6.5"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "source-map-support": "^0.3.3",
+    "hen-widget": "../modules/hen-widget"
+  }
+}

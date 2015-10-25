@@ -1,0 +1,26 @@
+{
+  "name": "TypeScriptNpm",
+  "version": "1.0.0",
+  "description": "Sandbox for building and maintaining local npm modules",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MrHen/TypeScriptNpm.git"
+  },
+  "author": "Adam Babcock",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MrHen/TypeScriptNpm/issues"
+  },
+  "homepage": "https://github.com/MrHen/TypeScriptNpm",
+  "devDependencies": {
+    "tsd": "^0.6.5"
+  },
+  "dependencies": {
+    "event-stream": "^3.3.2",
+    "gulp": "^3.9.0",
+    "gulp-filter": "^3.0.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-typescript": "^2.9.2",
+    "lodash": "^3.10.1"
+  }
+}
