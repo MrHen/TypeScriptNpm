@@ -1,9 +1,0 @@
-{
-  "name": "hen-widget",
-  "version": "1.0.0",
-  "description": "A fancy widget",
-  "main": "app/index.js",
-  "typings": "./app/index.d.ts",
-  "author": "Adam Babcock",
-  "license": "ISC"
-}

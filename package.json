@@ -21,6 +21,7 @@
     "gulp-filter": "^3.0.1",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-typescript": "^2.9.2",
+    "gulp-util": "^3.0.7",
     "lodash": "^3.10.1"
   }
 }

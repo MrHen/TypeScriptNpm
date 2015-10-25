@@ -4,6 +4,7 @@ var _ = require('lodash');
 var event_stream = require('event-stream');
 var gulp = require('gulp');
 var gulp_typescript = require('gulp-typescript');
+var gulp_util = require('gulp-util');
 
 var modules_paths = {
     source: {
@@ -62,5 +63,31 @@ gulp.task('server', function() {
     return event_stream.merge(
         tsResult.dts.pipe(gulp.dest(server_paths.built_paths.typings)),
         tsResult.js.pipe(gulp.dest(server_paths.built_paths.app))
+    );
+});
+
+gulp.task('npmbuild', function() {
+    gulp_util.log('Detecting appropriate starting directory...', process.env.INIT_CWD);
+
+    var out = process.env.INIT_CWD + '/app';
+    var build = [process.env.INIT_CWD + '/**/*.ts', '!' + process.env.INIT_CWD + '/node_modules/**/*'];
+    //var copy = [process.env.INIT_CWD + '/**/*.{js,json}', '!' + out + '/**/*'];
+    var typings = 'typings/tsd.d.ts';
+
+    var project = gulp_typescript.createProject({
+        declarationFiles: true,
+        noExternalResolve: false,
+        target: 'ES5',
+        module: 'commonjs',
+        noEmitOnError: true
+    });
+
+    var tsResult = gulp.src(_.flatten([build, typings]))
+        .pipe(gulp_typescript(project));
+
+    return event_stream.merge(
+        tsResult.dts.pipe(gulp.dest(out)),
+        tsResult.js.pipe(gulp.dest(out))
+        //gulp.src(copy).pipe(gulp.dest(out))
     );
 });

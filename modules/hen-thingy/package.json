@@ -1,0 +1,16 @@
+{
+  "name": "hen-thingy",
+  "version": "1.0.0",
+  "description": "A fancy widget",
+  "main": "app/index.js",
+  "typings": "./app/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MrHen/TypeScriptNpm.git"
+  },
+  "author": "Adam Babcock",
+  "license": "ISC",
+  "scripts": {
+    "build": "gulp npmbuild"
+  }
+}
