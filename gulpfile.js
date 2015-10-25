@@ -20,7 +20,7 @@ var modules_paths = {
 
 var server_paths = {
     source: {
-        app: ['server/src/**/*.ts', 'server/typings/tsd.d.ts']
+        app: ['server/src/**/*.ts', 'typings/tsd.d.ts']
     },
 
     built_paths: {
@@ -70,7 +70,7 @@ gulp.task('npmbuild', function() {
     gulp_util.log('Detecting appropriate starting directory...', process.env.INIT_CWD);
 
     var out = process.env.INIT_CWD + '/app';
-    var build = [process.env.INIT_CWD + '/**/*.ts', 'server/typings/tsd.d.ts', '!' + process.env.INIT_CWD + '/node_modules/**/*'];
+    var build = [process.env.INIT_CWD + '/**/*.ts', 'typings/tsd.d.ts', '!' + process.env.INIT_CWD + '/node_modules/**/*'];
     //var copy = [process.env.INIT_CWD + '/**/*.{js,json}', '!' + out + '/**/*'];
     var typings = 'typings/tsd.d.ts';
 

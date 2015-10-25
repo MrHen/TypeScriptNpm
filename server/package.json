@@ -16,9 +16,6 @@
     "url": "https://github.com/MrHen/TypeScriptNpm/issues"
   },
   "homepage": "https://github.com/MrHen/TypeScriptNpm",
-  "devDependencies": {
-    "tsd": "^0.6.5"
-  },
   "dependencies": {
     "express": "^4.13.3",
     "source-map-support": "^0.3.3",
