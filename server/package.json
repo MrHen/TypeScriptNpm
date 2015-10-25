@@ -2,9 +2,9 @@
   "name": "TypeScriptNpm-Server",
   "version": "1.0.0",
   "description": "Sandbox for building and maintaining local npm modules",
-  "main": "index.js",
+  "main": "app/index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node app/index.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,6 @@
   "dependencies": {
     "express": "^4.13.3",
     "source-map-support": "^0.3.3",
-    "hen-widget": "../modules/hen-widget"
+    "hen-widget": "../modules/app/hen-widget"
   }
 }

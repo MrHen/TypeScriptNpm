@@ -7,23 +7,24 @@ var gulp_typescript = require('gulp-typescript');
 
 var modules_paths = {
     source: {
-        app: ['modules/**/*.ts']
+        app: ['modules/src/**/*.ts'],
+        files: ['modules/src/**/*.{json,js}']
     },
 
     built_paths: {
-        app: 'modules/',
-        typings: 'modules/'
+        app: 'modules/app',
+        typings: 'modules/app'
     }
 };
 
 var server_paths = {
     source: {
-        app: ['server/**/*.ts']
+        app: ['server/src/**/*.ts', 'server/typings/tsd.d.ts']
     },
 
     built_paths: {
-        app: 'server/',
-        typings: 'server/'
+        app: 'server/app',
+        typings: 'server/app'
     }
 };
 
@@ -41,7 +42,8 @@ gulp.task('modules', function() {
 
     return event_stream.merge(
         tsResult.dts.pipe(gulp.dest(modules_paths.built_paths.typings)),
-        tsResult.js.pipe(gulp.dest(modules_paths.built_paths.app))
+        tsResult.js.pipe(gulp.dest(modules_paths.built_paths.app)),
+        gulp.src(modules_paths.source.files).pipe(gulp.dest(modules_paths.built_paths.app))
     );
 });
 
