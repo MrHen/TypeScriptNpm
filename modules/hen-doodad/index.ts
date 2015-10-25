@@ -1,9 +1,9 @@
 import HenThingy = require('hen-thingy');
 
-module HenWidget {
+module HenDoodad {
     export function fiddle(start:number):number {
-        return HenThingy.tweak(start) + 10;
+        return HenThingy.tweak(start) + 20;
     }
 }
 
-export = HenWidget;
+export = HenDoodad;
