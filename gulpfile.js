@@ -8,6 +8,11 @@ var gulp_newer = require('gulp-newer');
 var gulp_filter = require('gulp-filter');
 var gulp_typescript = require('gulp-typescript');
 var gulp_util = require('gulp-util');
+var map_stream = require('map-stream');
+var path = require('path');
+var through = require('through2');
+
+var PluginError = gulp_util.PluginError;
 
 var modules_paths = {
     source: {
@@ -72,14 +77,20 @@ gulp.task('server', function() {
 gulp.task('npmbump', function() {
     gulp_util.log('Detecting appropriate starting directory for bump...', process.env.INIT_CWD);
 
-    var packageFilter = gulp_filter('**/package.json');
+    return gulp.src('modules/**/package.json')
+        .pipe(map_stream(function(file, done) {
+            var module = path.dirname(file.path) + '/**/*';
+            var packageFilter = gulp_filter('**/package.json');
 
-    gulp.src('modules/hen-circle/**/*')
-        .pipe(gulp_newer('modules/hen-circle/package.json'))
-        .pipe(packageFilter)
-        .pipe(gulp_bump())
-        .pipe(gulp.dest('modules/hen-circle/'));
-
+            gulp.src(module)
+                .pipe(gulp_newer(file.path))
+                .pipe(packageFilter)
+                .pipe(gulp_bump())
+                .pipe(gulp.dest(path.dirname(file.path)))
+                .on('end', function() {
+                    done(null, file);
+                });
+        }));
 });
 
 gulp.task('npmbuild', function() {
